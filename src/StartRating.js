@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 const StarRating = () => {
   const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
   console.log(rating);
   return (
     <div>
@@ -22,7 +23,9 @@ const StarRating = () => {
               size={100}
               className={"star"}
               key={star}
-              color={ratingValue <= rating ? "#ffc107" : "#e4e5e9"}
+              onMouseEnter={() => setHover(ratingValue)}
+              onMouseLeave={() => setHover(null)}
+              color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
             />
           </label>
         );
